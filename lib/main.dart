@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         "register": (BuildContext _context) => RegisterationPage(),
         "home": (BuildContext _context) => HomePage(),
         //TODO: work on
-        "profileuigit ": (BuildContext _context) => ProfilePage(1000, 1000),
+        "profileui": (BuildContext _context) => ProfilePage(1000, 1000),
       },
       // home: LoginPage(),
     );

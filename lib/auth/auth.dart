@@ -33,7 +33,8 @@ class AuthProvider extends ChangeNotifier {
       // Navigate to HomePage
 
       //TODO: change navigation back
-      NavigationService.instance.navigateToReplacement("profileui");
+      NavigationService.instance.navigateToReplacement("home");
+      // NavigationService.instance.navigateToReplacement("profileui");
     } catch (e) {
       status = AuthStatus.Error;
       // displays error
