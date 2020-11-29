@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:pinger/models/contact.dart';
 
 class DBService {
   static DBService instance = DBService();
@@ -14,14 +15,25 @@ class DBService {
   Future<void> createUserInDB(
       String _uid, String _name, String _email, String _imageURL) async {
     try {
-      return await _db.collection(_userCollection).doc(_uid).set({
-        "name": _name,
-        "email": _email,
-        "image": _imageURL,
-        "lastSeen": DateTime.now().toUtc(),
-      });
+      return await _db.collection(_userCollection).doc(_uid).set(
+        {
+          "name": _name,
+          "email": _email,
+          "image": _imageURL,
+          "lastSeen": DateTime.now().toUtc(),
+        },
+      );
     } catch (e) {
       print(e);
     }
+  }
+
+  Stream<Contact> getUserData(String _userID) {
+    var _ref = _db.collection(_userCollection).document(_userID);
+    return _ref.get().asStream().map(
+      (_snapshot) {
+        return Contact.fromFirestore(_snapshot);
+      },
+    );
   }
 }
