@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pinger/models/contact.dart';
+import 'package:pinger/models/conversation.dart';
 
 class DBService {
   static DBService instance = DBService();
@@ -11,6 +12,7 @@ class DBService {
   }
 
   String _userCollection = "Users";
+  String _conversationCollections = "Conversations";
 
   Future<void> createUserInDB(
       String _uid, String _name, String _email, String _imageURL) async {
@@ -35,5 +37,18 @@ class DBService {
         return Contact.fromFirestore(_snapshot);
       },
     );
+  }
+
+  Stream<List<ConversationSnippet>> getUserConversations(String _userID) {
+    var _ref = _db
+        .collection(_userCollection)
+        .document(_userID)
+        .collection(_conversationCollections);
+    return _ref.snapshots().map((_snapshot) {
+      return _snapshot.documents.map((_doc) {
+        return ConversationSnippet.fromFirestore(_doc);
+      });
+      // }).tolist(); //TODO: Get that to work
+    });
   }
 }
