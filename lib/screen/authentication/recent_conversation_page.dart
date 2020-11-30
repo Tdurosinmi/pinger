@@ -62,6 +62,7 @@ class RecentConversationsPage extends StatelessWidget {
                             fit: BoxFit.cover,
                             image:
                                 NetworkImage("https://i.pravatar.cc/150?img=3"),
+                            //TODO: work on that
                             //image: NetworkImage(_data[index].image),
                           ),
                         ),
