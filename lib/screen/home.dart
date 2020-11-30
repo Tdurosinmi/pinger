@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:pinger/screen/authentication/profile_page.dart';
+import 'package:pinger/screen/authentication/recent_conversation_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -72,7 +73,7 @@ class _HomePageState extends State<HomePage>
       controller: _tabController,
       children: <Widget>[
         ProfilePage(_height, _width),
-        ProfilePage(_height, _width),
+        RecentConversationsPage(_height, _width),
         ProfilePage(_height, _width),
       ],
     );
