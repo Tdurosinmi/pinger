@@ -94,7 +94,7 @@ class _SearchPageState extends State<SearchPage> {
                     var _currentTime = DateTime.now();
                     //TODO: work on this gave a 'to date was called on null error'.
 
-                    // var _isUserActive = _userData.lastseen.toDate().isBefore(
+                    // var _isUserActive = !_userData.lastseen.toDate().isBefore(
                     //       _currentTime.subtract(
                     //         Duration(
                     //           hours: 1,
