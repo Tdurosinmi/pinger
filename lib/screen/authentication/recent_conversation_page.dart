@@ -49,7 +49,7 @@ class RecentConversationsPage extends StatelessWidget {
                       title: Text("Tolu"),
                       //TODO: WORK ON THAT
                       // title: Text(_data[_index].name),
-                      subtitle: Text("Subtitle"),
+                      subtitle: Text("Subtite"),
                       // subtitle: Text(_data[index].lastMessage),
                       tileColor: Colors
                           .white, //TODO: maybe change that color some where else

@@ -47,8 +47,16 @@ class DBService {
     return _ref.snapshots().map((_snapshot) {
       return _snapshot.documents.map((_doc) {
         return ConversationSnippet.fromFirestore(_doc);
-      });
-      // }).tolist(); //TODO: Get that to work
+      }).toList();
+    });
+  }
+
+  Stream<List<Contact>> getUsersInDB(String _searchName) {
+    var _ref = _db.collection(_userCollection);
+    return _ref.getDocuments().asStream().map((_snapshot) {
+      return _snapshot.documents.map((_doc) {
+        return Contact.fromFirestore(_doc);
+      }).toList();
     });
   }
 }
