@@ -7,6 +7,8 @@ import 'package:pinger/auth/auth.dart';
 import 'package:pinger/services/db_service.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:pinger/services/navigation_service.dart';
+import 'package:pinger/screen/authentication/conversation_page.dart';
 
 class RecentConversationsPage extends StatelessWidget {
   final double _height;
@@ -39,13 +41,26 @@ class RecentConversationsPage extends StatelessWidget {
                 //TODO: WORK ON THAT
                 // return _snapshot.hasData
                 //     ?
+                print("getting User Conversationsssssss${_snapshot.data}");
                 return ListView.builder(
                   //TODO: work on that
                   // itemCount: _data.length,
                   itemCount: 1,
                   itemBuilder: (_context, _index) {
                     return ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        NavigationService.instance.navigateToRoute(
+                          MaterialPageRoute(
+                            builder: (BuildContext _context) {
+                              return ConversationPage(
+                                  _data[_index].conversationID,
+                                  _data[_index].id,
+                                  _data[_index].name,
+                                  _data[_index].image);
+                            },
+                          ),
+                        );
+                      },
                       title: Text("Tolu"),
                       //TODO: WORK ON THAT
                       // title: Text(_data[_index].name),
